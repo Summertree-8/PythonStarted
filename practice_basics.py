@@ -240,7 +240,74 @@ try:
 except:
     print('error')
 
+#31
+num = 0
+try:
+    print(f'ans: {10 / num}')
+except ZeroDivisionError as e:
+    print(e)
 
+#32
+
+def divide(a,b):
+    try:
+        print(f'ans: {a/b}')
+    except ZeroDivisionError as e:
+        print(e)
+    except TypeError as e:
+        print(e)
+
+divide(10, 'aaa')
+
+#33
+def divide(a,b):
+    try:
+        print(f'ans: {a/b}')
+    except ZeroDivisionError as e:
+        print(e)
+    except TypeError as e:
+        print(e)
+    else:
+        print('no problem')
+
+divide(10, 3)
+
+#34
+def divide(a,b):
+    try:
+        print(f'ans: {a/b}')
+    except ZeroDivisionError as e:
+        print(e)
+    except TypeError as e:
+        print(e)
+    finally:
+        print('all process finished')
+
+divide(10, 3)
+divide(10, 0)
+divide(10, 'aaaa')
+
+#35
+def divide(a,b):
+    try:
+        print(f'ans: {a/b}')
+    except ZeroDivisionError as e:
+        print(e)
+    except TypeError as e:
+        pass
+    finally:
+        print('all process finished')
+
+divide(10, 3)
+divide(10, 'aaaa')
+
+#36
+
+
+#37
+#38
+#39
+#40
 
 
 
