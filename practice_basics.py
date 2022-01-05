@@ -161,11 +161,84 @@ dictionary = {
 }
 
 print(dictionary['C'])
+print(dictionary['E'])
 # print(dictionary['F'])
-#
+
+print(dictionary.get('C'))
+print(dictionary.get('E'))
 print(dictionary.get('F'))
 
+#21
+num = 6
+if num > 0:
+    print('plus')
+elif num == 0:
+    print('zero')
+else:
+    print('minus')
 
+#22
+a = -7
+# if (a % 2 == 0) & (a>=0) & (a < 10):
+if 0 <= a < 10 and a % 2 == 0:
+    print('1桁偶数')
+elif a % 2 == 1 and a < 0:
+    print('負の奇数')
+else:
+    print('整数')
+
+#23
+names = ['John', 'Kevin', 'Louis']
+for name in names:
+    print(name)
+
+#24
+for i in range(10, 20):
+    print(i)
+
+#25
+for i in range(10):
+    if i == 6:
+        print('finish')
+        break
+    print(i)
+
+#26
+for i in range(10):
+    if i == 3:
+        continue
+    print(i)
+
+#27
+lasts = ['Smith', 'White', 'Sato']
+firsts = ['Amy', 'James', 'Jones']
+for last, first in zip(lasts, firsts):
+    print (last+first)
+
+#28
+lasts = ['Smith', 'White', 'Sato']
+for i, last in enumerate(lasts):
+    print(f'{i} is {last}')
+
+#29
+nums = []
+for i in range(5):
+    nums.append(i*2)
+    print(nums)
+
+numbers = [2*i for i in range(5)]
+print(numbers)
+
+#30
+num = 0
+# if num == 0:
+#     print('error')
+# ans = 10 / num
+# print(ans)
+try:
+    print(f'ans : {10/num}')
+except:
+    print('error')
 
 
 
