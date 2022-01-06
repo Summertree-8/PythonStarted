@@ -353,8 +353,12 @@ print(kid.nationality)
 kid.say_hello(12)
 
 #39
+'''
+need review
+private, public
+'''
 class Person:
-    nationality = 'Japan'
+    __nationality = 'Japan'
 
     def __init__(self, name):
         self.name = name
@@ -362,12 +366,22 @@ class Person:
     def say_hello(self):
         print(f'hello, my nationality is {self.nationality}')
 
-    def say_my_name(self):
+    def __say_my_name(self):
         print(f'my name is {self.name}')
 
+Jennie = Person('Jennie')
+#AttributeError: 'Person' object has no attribute '__nationality'
+# print(Jennie.__nationality)
+print(Jennie.name)
+#AttributeError: 'Person' object has no attribute 'say_my_name'
+# Jennie.say_my_name()
+
 #40
+file = open(r"C:\Users\xingyun\Desktop\sample_python100.txt")
+text = file.read()
+file.close()
 
-
+print(text)
 
 
 
