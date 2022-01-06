@@ -302,11 +302,69 @@ divide(10, 3)
 divide(10, 'aaaa')
 
 #36
+class Person:
+    nationality = 'Japan'
 
+    def say_hello(self):
+        print(f'hello, my nationality is {self.nationality}')
+
+person = Person()
+print(person.nationality)
+person.say_hello()
 
 #37
+class Person:
+    nationality = 'Japan'
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f'hello, my nationality is {self.nationality}')
+
+    def say_my_name(self):
+        print(f'my name is {self.name}')
+
+Jennie = Person('Jennie')
+print(Jennie.nationality)
+print(Jennie.name)
+Jennie.say_my_name()
+
 #38
+class Person:
+    nationality = 'Japan'
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f'hello, my nationality is {self.nationality}')
+
+    def say_my_name(self):
+        print(f'my name is {self.name}')
+
+class Kid(Person):
+    def say_hello(self, age):
+        print(f'hello, my name is {self.name}. I am {age} years old.')
+
+kid = Kid('Jane')
+print(kid.name)
+print(kid.nationality)
+kid.say_hello(12)
+
 #39
+class Person:
+    nationality = 'Japan'
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f'hello, my nationality is {self.nationality}')
+
+    def say_my_name(self):
+        print(f'my name is {self.name}')
+
 #40
 
 
