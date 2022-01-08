@@ -383,6 +383,11 @@ file.close()
 
 print(text)
 
+#41
+with open(r"C:\Users\xingyun\Desktop\sample_python100.txt", 'r') as f:
+    text = f.read()
+    print(text)
+
 
 
 
