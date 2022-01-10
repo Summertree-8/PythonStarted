@@ -388,6 +388,14 @@ with open(r"C:\Users\xingyun\Desktop\sample_python100.txt", 'r') as f:
     text = f.read()
     print(text)
 
+#42
+import json
+with open(r"C:\Users\xingyun\Downloads\sample.json", 'r') as f:
+    data = json.load(f)
+print(data)
+print(data["storename"])
+
+
 
 
 
