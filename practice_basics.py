@@ -377,24 +377,55 @@ print(Jennie.name)
 # Jennie.say_my_name()
 
 #40
-file = open(r"C:\Users\xingyun\Desktop\sample_python100.txt")
-text = file.read()
-file.close()
+# file = open(r"C:\Users\XXXXXX\Desktop\sample_python100.txt")
+# text = file.read()
+# file.close()
 
-print(text)
+# print(text)
 
 #41
-with open(r"C:\Users\xingyun\Desktop\sample_python100.txt", 'r') as f:
-    text = f.read()
-    print(text)
+# with open(r"C:\Users\XXXXXX\Desktop\sample_python100.txt", 'r') as f:
+#     text = f.read()
+#     print(text)
 
 #42
 import json
-with open(r"C:\Users\xingyun\Downloads\sample.json", 'r') as f:
-    data = json.load(f)
-print(data)
-print(data["storename"])
+# with open(r"C:\Users\XXXXXX\Downloads\sample.json", 'r') as f:
+#     data = json.load(f)
+# print(data)
+# print(data["storename"])
 
+#43
+import os
+for curDir, dirs, files in os.walk('.'):
+#     # print(files)
+#     # print(dirs)
+    for file in files:
+        print(f'{curDir}/{file}')
+
+#44
+import os
+lists = os.listdir('.')
+print(lists.sort())
+
+#45
+os.path.abspath('')
+
+#46
+os.path.basename('')
+
+#47
+os.path.exists('xyz/')
+os.path.exists('')
+
+#48
+os.path.isdir('xyz/')
+
+#49
+os.path.isfile('')
+
+#50
+print(os.path.join(curDir, file))
 
 
 
