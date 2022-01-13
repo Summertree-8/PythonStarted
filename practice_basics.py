@@ -430,6 +430,10 @@ print(os.path.join(curDir, file))
 #51
 os.mkdir('test_new_dir')
 
+#52
+# os.remove('')
+
+
 
 
 
