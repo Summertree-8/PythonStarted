@@ -396,53 +396,74 @@ import json
 # print(data["storename"])
 
 #43
-import os
-for curDir, dirs, files in os.walk('.'):
+# import os
+# for curDir, dirs, files in os.walk('.'):
 #     # print(files)
 #     # print(dirs)
-    for file in files:
-        print(f'{curDir}/{file}')
+#     for file in files:
+#         print(f'{curDir}/{file}')
 
 #44
-import os
-lists = os.listdir('.')
-print(lists.sort())
+# import os
+# lists = os.listdir('.')
+# print(lists.sort())
 
 #45
-os.path.abspath('')
+# os.path.abspath('')
 
 #46
-os.path.basename('')
+# os.path.basename('')
 
 #47
-os.path.exists('xyz/')
-os.path.exists('')
+# os.path.exists('xyz/')
+# os.path.exists('')
 
 #48
-os.path.isdir('xyz/')
+# os.path.isdir('xyz/')
 
 #49
-os.path.isfile('')
+# os.path.isfile('')
 
 #50
-print(os.path.join(curDir, file))
+# print(os.path.join(curDir, file))
 
 #51
-os.mkdir('test_new_dir')
+# os.mkdir('test_new_dir')
 
 #52
 # os.remove('')
 
+#53
+# os.rename('before', 'after')
 
+#56
+# os.environ['PATH']
 
+#57
+# os.system('la -a')
+# print(os.popen('ls -a').read())
 
+#58
+import numpy as np
+a = np.array([1,2,3,4])
+print(a)
+print(a.shape)
 
+#59
+b = np.array([[1,2], [3,4]])
+print(b)
+print(b.shape)
 
-
-
-
-
-
+#60
+c = np.zeros(8)
+print(c)
+print(c.shape)
+d = np.zeros((4,3))
+print(d)
+print(d.shape)
+e = np.eye(5)
+print(e)
+print(e.shape)
 
 
 
