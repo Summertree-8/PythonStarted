@@ -465,21 +465,39 @@ e = np.eye(5)
 print(e)
 print(e.shape)
 
+#61
+A = np.array([[1,5],[4,-2]])
+print(A)
+B = np.array([[2,-1],[7,6]])
+print(B)
 
+print(A + B)
+print(A - B)
+print(np.dot(A, B))
 
+#62
+A = np.array([[1,5,-2],[4,0,-3],[-8,2,6]])
+print(A)
+print(A.sum())
+print(A.max())
+print(A.min())
 
+print(np.average(A))
+print(np.median(A))
+print(np.var(A))
+print(np.std(A))
 
+#63
+A = np.array([[1,5], [4,-2]])
+print(A)
+a = np.linalg.det(A)
+print(a)
+A_inv = np.linalg.inv(A)
+print(A_inv)
+result = np.dot(A, A_inv)
+print(result)
 
-
-
-
-
-
-
-
-
-
-
+#64
 
 
 
