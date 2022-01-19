@@ -26,10 +26,28 @@ elem_login_btn.click()
 
 #headless mode(GUI->CUI)
 #without launching the browser
-from selenium.webdriver.chrome.options import Options
-options = Options()
-options.add_argument('--headless')
-browser = webdriver.Chrome(options = options)
-url = 'https://scraping-for-beginner.herokuapp.com/login_page'
-browser.get(url)
-browser.quit()
+# from selenium.webdriver.chrome.options import Options
+# options = Options()
+# options.add_argument('--headless')
+# browser = webdriver.Chrome(options = options)
+# url = 'https://scraping-for-beginner.herokuapp.com/login_page'
+# browser.get(url)
+# browser.quit()
+
+#get data
+elem = browser.find_element_by_id('name')
+name = elem.text
+print(name)
+elem = browser.find_element_by_id('company')
+company = elem.text
+print(company)
+elem = browser.find_element_by_id('birthday')
+birthday = elem.text
+print(birthday)
+elem = browser.find_element_by_id('come_from')
+come_from = elem.text
+print(come_from)
+elem = browser.find_element_by_id('hobby')
+hobby = elem.text
+hobby = hobby.replace('\n', ',')
+print(hobby)
