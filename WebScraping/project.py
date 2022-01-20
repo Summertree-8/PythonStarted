@@ -10,7 +10,7 @@ from time import sleep
 browser = webdriver.Chrome()
 url = 'https://scraping-for-beginner.herokuapp.com/login_page'
 browser.get(url)
-sleep(4)
+sleep(1)
 
 elem_username = browser.find_element_by_id('username')
 # print(elem_username)
@@ -51,3 +51,31 @@ elem = browser.find_element_by_id('hobby')
 hobby = elem.text
 hobby = hobby.replace('\n', ',')
 print(hobby)
+
+#get data from table
+# elem_th = browser.find_element_by_tag_name('th')
+# print(elem_th.text)
+
+#th
+keys = []
+elems_th = browser.find_elements_by_tag_name('th')
+for elem_th in elems_th:
+    key = elem_th.text
+    keys.append(key)
+    # print(elem_th.text)
+    print(keys)
+
+#td
+values = []
+elems_td = browser.find_elements_by_tag_name('td')
+for elem_td in elems_td:
+    value = elem_td.text
+    values.append(value)
+print(values)
+
+import pandas as pd
+df = pd.DataFrame()
+df['項目'] = keys
+df['値'] = values
+print(df)
+df.to_csv('teacher_info.csv', index=False)
