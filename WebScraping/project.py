@@ -71,11 +71,21 @@ elems_td = browser.find_elements_by_tag_name('td')
 for elem_td in elems_td:
     value = elem_td.text
     values.append(value)
-print(values)
+# print(values)
 
 import pandas as pd
 df = pd.DataFrame()
 df['項目'] = keys
 df['値'] = values
-print(df)
+# print(df)
 df.to_csv('teacher_info.csv', index=False)
+
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://scraping-for-beginner.herokuapp.com/udemy'
+res = requests.get(url)
+
+# print(res)
+
+#create better html by BeautifulSoup
