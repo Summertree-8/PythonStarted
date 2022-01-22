@@ -85,7 +85,7 @@ from bs4 import BeautifulSoup
 
 url = 'https://scraping-for-beginner.herokuapp.com/udemy'
 res = requests.get(url)
-
 # print(res)
 
 #create better html by BeautifulSoup
+soup = BeautifulSoup(res.text, 'html.parser')
