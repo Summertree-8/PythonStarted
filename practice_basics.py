@@ -498,7 +498,8 @@ result = np.dot(A, A_inv)
 print(result)
 
 #64
-
+import pandas as pd
+# df = pd.read_csv('weather.csv')
 
 
 
