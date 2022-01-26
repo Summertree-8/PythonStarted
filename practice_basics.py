@@ -497,10 +497,20 @@ print(A_inv)
 result = np.dot(A, A_inv)
 print(result)
 
-#64
-import pandas as pd
+# #64
+# import pandas as pd
 # df = pd.read_csv('weather.csv')
+#
+# #65
+# df.head(3)
+# df.tail(10)
+#
+# #66
+# df.head()
+# df.columns
+# df = df[[#select columns needed]][1:]
+# df.head()
 
-#65
+
 
 
