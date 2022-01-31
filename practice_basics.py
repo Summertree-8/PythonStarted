@@ -511,6 +511,11 @@ print(result)
 # df = df[[#select columns needed]][1:]
 # df.head()
 
+# #67
+# df.dtypes
+# df.shape
+# df.columns
+# df,index
 
 
 
