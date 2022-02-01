@@ -5,6 +5,8 @@ practice 100 basic programming by python
 '''
 
 #1
+import pandas as pd
+
 name = 'str1'
 name2 = "str2"
 
@@ -515,7 +517,19 @@ print(result)
 # df.dtypes
 # df.shape
 # df.columns
-# df,index
+# df.index
 
+#68
+# df.iloc[4:10,2:6]
+
+#69
+# df_people = pd.read_csv('people.csv')
+# df_people[df_people['nationality'] == 'America']
+# df_people.query('nationality == "America"')
+# df_people[(df_people['age'] >= 20) & (df_people['age'] <= 30)]
+# df_people.query('age >= 20 & age <= 30')
+
+#70
+# df_people['nationality'].unique()
 
 
