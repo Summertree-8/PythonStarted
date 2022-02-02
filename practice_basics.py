@@ -532,4 +532,8 @@ print(result)
 #70
 # df_people['nationality'].unique()
 
+#71
+# df_people.drop_duplicates(subset = 'nationality')
+
+#72
 
