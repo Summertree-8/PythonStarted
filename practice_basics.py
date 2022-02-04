@@ -536,4 +536,7 @@ print(result)
 # df_people.drop_duplicates(subset = 'nationality')
 
 #72
-
+# df.columns = ['new column name']
+# df.rename(columns={'old':'new',
+#                    'old':'new',
+#                    'old':'new'}).head()
