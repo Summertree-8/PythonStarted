@@ -9,3 +9,6 @@ class Solution(object):
             if(target - num) in nums:
                 if nums.index(target-num) != i:
                     return [i, nums.index(target-num)]
+
+
+
