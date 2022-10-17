@@ -15,12 +15,12 @@ def read_file(path):
 
   return word_list
 
-#tf（「単語 i の文書 j における出現回数）の計算
-def tf(word, doc):
-  word_count = 0
+#tf（「単語 i の文書 j における出現回数）を計算し辞書で返す
+def tf(doc):
+  word_count = {}
   for i in doc:
-    if i == word:
-      word_count += 1
+    word_count[i] = doc.count(i)
+  # print(word_count)
   return word_count
 
 def calc_df(word, docs):
@@ -30,7 +30,7 @@ def calc_df(word, docs):
       df += 1
   return df
 
-#IDFの計算
+#IDFを計算し辞書で返す
 def idf(word, docs):
   #文書数
   N = 10
@@ -52,15 +52,20 @@ def write_file(path, text):
     text = "file write error"
 
 def main():
-  list_a = read_file('0.txt')
-  print(list_a)
-  tf_score = {}
-  for i in list_a:
-    tf_score[i] = tf(i, list_a)
-  print(tf_score)
+  #全ての文書を保持
+  docs = []
+  for i in range(10):
+    docs.append(read_file('input/'+str(i)+'.txt'))
+  # print(docs)
+  list_2 = read_file('0_1.txt')
+  # print(list_a)
+  # tf_score = tf(list_1)
+  # for i in list_a:
+  #   tf_score[i] = tf(i, list_a)
+  # print(tf_score)
   idf_score = {}
-  for i in list_a:
-    idf_score[i] = tf(i, docs)
+  # for i in list_a:
+  #   idf_score[i] = tf(i, docs)
 
 if __name__ == "__main__":
   main()
