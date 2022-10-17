@@ -74,25 +74,5 @@ def main():
     for word in tf_idf_score:
       write_file('result/'+str(i)+'.txt', word+'  '+str(tf_idf_score[word])+'\n')
 
-
-  # tf_score = []
-  # for doc in docs:
-  #   tf_score.append(tf(doc))
-  # print(tf_score)
-
-  # idf_score = []
-  # for doc in docs:
-  #   idf_score.append(idf(N, doc, docs))
-  # print(idf_score)
-
-  # tf_idf = []
-  # for i in range(N):
-  #   tf_idf.append(tf_idf(doc[i], tf_score[i], idf_score[i]))
-  # print(tf_idf)
-
-  # for i in range(N):
-  #   text =
-  #   write_file('result/'+str(i)+'.txt', text)
-
 if __name__ == "__main__":
   main()
