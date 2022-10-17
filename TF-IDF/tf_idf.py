@@ -35,7 +35,7 @@ def calc_df(word, docs):
 def idf(N, doc, docs):
   idf = {}
   for word in doc:
-    idf[word] = math.log2(N/calc_df(word, docs))
+    idf[word] = math.log(N/calc_df(word, docs))
   return idf
 
 #渡された文書のTF-IDFの計算
@@ -47,7 +47,7 @@ def tf_idf(doc, tf_score, idf_score):
 
 def write_file(path, text):
   try:
-    file = codecs.open(path, "w", "utf-8")
+    file = codecs.open(path, "a", "utf-8")
     file.write(text)
     file.close()
   except:
@@ -64,20 +64,31 @@ def main():
     docs.append(read_file(str(i) + '.txt'))
   print(docs)
 
-  tf_score = []
-  for doc in docs:
-    tf_score.append(tf(doc))
-  print(tf_score)
-
-  idf_score = []
-  for doc in docs:
-    idf_score.append(idf(N, doc, docs))
-  print(idf_score)
-
-  tf_idf = []
   for i in range(N):
-    tf_idf.append(tf_idf(doc[i], tf_score[i], idf_score[i]))
-  print(tf_idf)
+    tf_score = tf(docs[i])
+    print('tf_score',tf_score)
+    idf_score = idf(N, docs[i], docs)
+    print('idf_score',idf_score)
+    tf_idf_score = tf_idf(docs[i], tf_score, idf_score)
+    print('tf_idf_score', tf_idf_score)
+    for word in tf_idf_score:
+      write_file('result/'+str(i)+'.txt', word+'  '+str(tf_idf_score[word])+'\n')
+
+
+  # tf_score = []
+  # for doc in docs:
+  #   tf_score.append(tf(doc))
+  # print(tf_score)
+
+  # idf_score = []
+  # for doc in docs:
+  #   idf_score.append(idf(N, doc, docs))
+  # print(idf_score)
+
+  # tf_idf = []
+  # for i in range(N):
+  #   tf_idf.append(tf_idf(doc[i], tf_score[i], idf_score[i]))
+  # print(tf_idf)
 
   # for i in range(N):
   #   text =
