@@ -6,10 +6,11 @@ def read_file(path):
   try:
     file = codecs.open(path, 'r', encoding='shift_jis')
     text = file.read()
-    # print(text)
+    print(text)
     file.close()
   except:
     text = "file open error"
+    print('error')
 
   word_list = text.split()
 
@@ -20,7 +21,7 @@ def tf(doc):
   word_count = {}
   for i in doc:
     word_count[i] = doc.count(i)
-  # print(word_count)
+    print(word_count[i])
   return word_count
 
 #渡された単語のdfの値を返す
@@ -36,6 +37,7 @@ def idf(N, doc, docs):
   idf = {}
   for word in doc:
     idf[word] = math.log(N/calc_df(word, docs))
+    print(idf[word])
   return idf
 
 #渡された文書のTF-IDFの計算
@@ -56,13 +58,12 @@ def write_file(path, text):
 
 def main():
   #文書の数
-  N = 3
+  N = 10
   #全ての文書を読み込む
   docs = []
   for i in range(N):
-    # docs.append(read_file('input/'+str(i)+'.txt'))
-    docs.append(read_file(str(i) + '.txt'))
-  print(docs)
+    docs.append(read_file('input/'+str(i)+'.txt'))
+  # print(docs)
 
   for i in range(N):
     tf_score = tf(docs[i])
