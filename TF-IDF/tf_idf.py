@@ -1,56 +1,39 @@
 import codecs
 import math
 
-#ファイルの読み込み
+#ファイルの読み込みlistで返す
 def read_file(path):
   try:
     file = codecs.open(path, 'r', encoding='shift_jis')
     text = file.read()
-    # print(text)
     file.close()
   except:
     text = "file open error"
-    print('error')
 
   word_list = text.split()
-
   return word_list
 
 #渡された辞文書の各単語のtf（「単語 i の文書 j における出現回数）を計算し辞書で返す
 def tf(doc):
   word_count = {}
   for i in doc:
-    if i not in word_count:
-      word_count[i] = 1
-    else:
-      word_count[i] += 1
-    # print(word_count[i])
+    word_count[i] = word_count.get(i, 0) + 1
   return word_count
 
-#渡された単語のdfの値を返す
-def calc_df(word, docs):
-  df = 0
-  for doc in docs:
-    # print('doc',doc)
-    # print('word',word)
-    if word in doc:
-      df += 1
-      # print('yes')
+#渡された単語のdf(単語iか出現する文書数)の値をもとめ、df値の辞書に追加
+def calc_df(N, tf_score):
+  df = {}
+  for doc in range(N):
+    #tfの辞書に存在すればその文書に出現している
+    for key in tf_score[doc].keys():
+      df[key] = df.get(key, 0) + 1
   return df
 
-#渡された文書の各単語のIDFを計算し辞書で返す
-def idf(N, doc, docs):
-  idf = {}
-  for word in doc:
-    idf[word] = math.log(N/calc_df(word, docs))
-    # print(idf[word])
-  return idf
-
-#渡された文書のTF-IDFを計算し辞書で返す
-def tf_idf(doc, tf_score, idf_score):
+#渡された文書(tf_score)のTF-IDFを計算し辞書で返す
+def tf_idf(N, tf_score, df):
   tf_idf = {}
-  for word in doc:
-    tf_idf[word] = tf_score[word]*idf_score[word]
+  for word in tf_score:
+    tf_idf[word] = tf_score[word] * math.log(N/df[word])
   return tf_idf
 
 def write_file(path, text):
@@ -69,24 +52,20 @@ def main():
   docs = []
   for i in range(N):
     docs.append(read_file('input/'+str(i)+'.txt'))
-    # docs.append(read_file(str(i) + '.txt'))
-  print('docs')
+  # print('docs')
 
-  docs_dict = []
+  #各文書のtf値の辞書を保持するリスト
+  tf_score = []
   for i in range(N):
-    tf_score = tf(docs[i])
-    # print('tf_score',tf_score)
+    tf_score.append(tf(docs[i]))
 
-    docs_dict.append(tf_score)
-  print('docs_dict')
+  df = calc_df(N, tf_score)
 
+  #各文書について、tf-idfの値を求める
   for i in range(N):
-    tf_score = tf(docs[i])
-    print('tf_score done')
-    idf_score = idf(N, docs[i], docs_dict)
-    print('idf_score')
-    tf_idf_score = tf_idf(docs[i], tf_score, idf_score)
-    print('tf_idf_score')
+    tf_idf_score = {}
+    tf_idf_score = tf_idf(N, tf_score[i], df)
+    #出力のファイルに書き込み
     for word in tf_idf_score:
       write_file('result/'+str(i)+'.txt', word+'  '+str(tf_idf_score[word])+'\n')
 
