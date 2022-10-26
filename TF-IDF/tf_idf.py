@@ -20,7 +20,7 @@ def tf(doc):
     word_count[i] = word_count.get(i, 0) + 1
   return word_count
 
-#渡された単語のdf(単語iか出現する文書数)の値をもとめ、df値の辞書に追加
+#df(単語iか出現する文書数)の値をもとめ、df値の辞書に追加
 def calc_df(N, tf_score):
   df = {}
   for doc in range(N):
