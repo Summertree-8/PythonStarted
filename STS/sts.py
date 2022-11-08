@@ -52,7 +52,7 @@ def main():
     doc_all.append(docs[i].split('\t')[1])
     # doc1 = np.append(doc1, docs[i].split('\t')[0])
     # doc2 = np.append(doc2, docs[i].split('\t')[1])
-  print(doc_all)
+  print('doc_all: \n', doc_all)
 
   #calc tf-idf
   tf_idf_list = []
@@ -63,11 +63,15 @@ def main():
   for i in range(len(docs)):
     tf_idf1.append(tf_idf_list[i * 2])
     tf_idf2.append(tf_idf_list[i * 2 + 1])
+  print('tf_idf1: \n', tf_idf1)
+  print('tf_idf2: \n', tf_idf2)
 
   #calc cos similarity
   cos_sim_res = []
+  # tf_idf1_n = np.array(tf_idf1).reshape(-1,1)
+  # tf_idf2_n = np.array(tf_idf2).reshape(-1, 1)
   for i in range(len(docs)):
-    print(cosine_similarity(tf_idf1,tf_idf2))
+    print('cosine_similarity: \n', cosine_similarity(tf_idf1[i], tf_idf2[i]))
     # cos_sim_res = cosine_similarity(tf_idf1,tf_idf2)
   # print('cos_sim_res: \n', cos_sim_res)
 
