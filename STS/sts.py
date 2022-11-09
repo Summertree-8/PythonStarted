@@ -34,6 +34,15 @@ def tf_idf(docs):
 # def cos_sim(v1, v2):
 #   return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
+def write_file(path, text):
+  try:
+    file = codecs.open(path, "a", "utf-8")
+    file.write(text)
+    file.close()
+  except:
+    text = "file write error"
+    print('error')
+
 def main():
   #read files
   docs = []
@@ -75,6 +84,7 @@ def main():
   res = []
   for i in range(len(docs)):
     res.append(cos_sim_res[i][i])
+    write_file('./result.txt', str(cos_sim_res[i][i])+'\n')
 
   print('cos_sim_res: \n', cos_sim_res)
   print('res: \n', res)
