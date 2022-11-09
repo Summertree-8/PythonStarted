@@ -23,13 +23,12 @@ def tf_idf(docs):
 
   # TF-IDFの計算
   values = vectorizer.fit_transform(docs).toarray()
-
   print('feature_names:', vectorizer.get_feature_names_out())
 
   # 特徴量ラベルの取得
-  # words = vectorizer.get_feature_names()
+  words = vectorizer.get_feature_names_out()
 
-  return values
+  return values, words
 
 #cos類似度を求める
 # def cos_sim(v1, v2):
@@ -56,10 +55,11 @@ def main():
 
   #calc tf-idf
   tf_idf_list = []
-  tf_idf_list = tf_idf(doc_all)
+  tf_idf_list, tf_idf_words = tf_idf(doc_all)
   tf_idf1 = []
   tf_idf2 = []
   print('tf_idf_list: \n', tf_idf_list)
+  print('tf_idf_words: \n', tf_idf_words)
   for i in range(len(docs)):
     tf_idf1.append(tf_idf_list[i * 2])
     tf_idf2.append(tf_idf_list[i * 2 + 1])
@@ -70,10 +70,19 @@ def main():
   cos_sim_res = []
   # tf_idf1_n = np.array(tf_idf1).reshape(-1,1)
   # tf_idf2_n = np.array(tf_idf2).reshape(-1, 1)
+  cos_sim_res = cosine_similarity(tf_idf1, tf_idf2)
+  # print('cosine_similarity: \n', cosine_similarity(tf_idf1, tf_idf2))
+  res = []
   for i in range(len(docs)):
-    print('cosine_similarity: \n', cosine_similarity(tf_idf1[i], tf_idf2[i]))
-    # cos_sim_res = cosine_similarity(tf_idf1,tf_idf2)
-  # print('cos_sim_res: \n', cos_sim_res)
+    res.append(cos_sim_res[i][i])
+
+  print('cos_sim_res: \n', cos_sim_res)
+  print('res: \n', res)
+
+  print(len(docs))
+  print(len(doc_all))
+  print(len(tf_idf1))
+  print(len(tf_idf2))
 
 
 
