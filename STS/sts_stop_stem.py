@@ -1,4 +1,4 @@
-#整形＋ストップワード除去＋語幹化
+#ストップワード除去＋語幹化
 import codecs
 import math
 import numpy as np
@@ -71,8 +71,8 @@ def main():
   doc_all_new = []
 
   for i in range(len(doc_all)):
-    _tmp = doc_all[i].replace('.', '')
-    tmp = _tmp.split()
+    # _tmp = doc_all[i].replace('.', '')
+    tmp = doc_all[i].split()
     tmp2 = ''
     # print(tmp)
     for j in range(len(tmp)):

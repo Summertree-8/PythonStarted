@@ -1,4 +1,4 @@
-#整形＋ストップワード除去＋語幹化
+#整形＋ストップワード除去＋語幹化+W2V
 import codecs
 import math
 import numpy as np
@@ -7,6 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer as PS
+from gensim.models import word2vec
 
 
 #ファイルの読み込みlistで返す
@@ -81,16 +82,21 @@ def main():
     doc_all_new.append(tmp2)
   print('doc_all_new: \n', doc_all_new)
 
+
+  model = word2vec.Word2Vec(doc_all_new)
+
+
   #calc tf-idf
   tf_idf_list = []
-  tf_idf_list, tf_idf_words = tf_idf(doc_all_new)
+  # tf_idf_list, tf_idf_words = tf_idf(doc_all_new)
   tf_idf1 = []
   tf_idf2 = []
   # print('tf_idf_list: \n', tf_idf_list)
   # print('tf_idf_words: \n', tf_idf_words)
-  for i in range(len(docs)):
-    tf_idf1.append(tf_idf_list[i * 2])
-    tf_idf2.append(tf_idf_list[i * 2 + 1])
+
+  # for i in range(len(docs)):
+  #   tf_idf1.append(tf_idf_list[i * 2])
+  #   tf_idf2.append(tf_idf_list[i * 2 + 1])
   # print('tf_idf1: \n', tf_idf1)
   # print('tf_idf2: \n', tf_idf2)
 
@@ -103,7 +109,7 @@ def main():
   res = []
   for i in range(len(docs)):
     res.append(cos_sim_res[i][i])
-    write_file('result_stop_stem/result.txt', str(cos_sim_res[i][i]) + '\n')
+    # write_file('result.txt', str(cos_sim_res[i][i]) + '\n')
 
   # print('cos_sim_res: \n', cos_sim_res)
   # print('res: \n', res)
