@@ -1,7 +1,18 @@
-#整形＋ストップワード除去＋語幹化
+#sentence transformer
 import codecs
 import math
 import numpy as np
+# 1. ライブラリのインポート
+import transformers
+import sentence_transformers
+transformers.BertTokenizer = transformers.BertJapaneseTokenizer
+from sentence_transformers import SentenceTransformer
+from sentence_transformers import models
+from sentence_transformers.losses import TripletDistanceMetric, TripletLoss
+from sentence_transformers.readers import TripletReader
+from sentence_transformers.datasets import SentencesDataset
+from torch.utils.data import DataLoader
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
