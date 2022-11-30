@@ -122,7 +122,7 @@ def main():
 
   train_dataloader = DataLoader(train_data, shuffle=True, batch_size=BATCH_SIZE)
   #ロスに TripletLossを使用
-  train_loss = losses.ContrastiveLoss(
+  train_loss = losses.BatchAllTripletLoss(
     model=model
   )
 
