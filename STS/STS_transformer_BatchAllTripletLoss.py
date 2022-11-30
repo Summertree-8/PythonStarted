@@ -15,6 +15,7 @@ from sentence_transformers.readers import TripletReader
 from sentence_transformers.datasets import SentencesDataset
 from torch.utils.data import DataLoader
 from sentence_transformers.readers import InputExample
+from sentence_transformers import losses
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -121,10 +122,8 @@ def main():
 
   train_dataloader = DataLoader(train_data, shuffle=True, batch_size=BATCH_SIZE)
   #ロスに TripletLossを使用
-  train_loss = TripletLoss(
-    model=model,
-    distance_metric=TripletDistanceMetric.EUCLIDEAN,
-    triplet_margin=1,
+  train_loss = losses.ContrastiveLoss(
+    model=model
   )
 
   # #学習
