@@ -63,28 +63,22 @@ def write_file(path, text):
     text = "file write error"
     print('error')
 
+def pre_process(doc):
+  stop_words = stopwords.words('english')
+  ps = PS()
+  doc_new = []
+
+  for i in range(len(doc)):
+    tmp = doc[i].split()
+    tmp2 = ''
+    for j in range(len(tmp)):
+      if tmp[j] not in stop_words:
+        tmp2 += ps.stem(tmp[j]) + ' '
+    doc_new.append(tmp2)
+  return doc_new
+
 def main():
-  #read files
-  docs = []
-  # docs=(read_file('testData/STS.input.images.txt'))
-  # doc1 = []
-  # doc2 = []
-  # doc_all = []
-  # stop_words = stopwords.words('english')
-  # ps = PS()
-  # for i in range(len(docs)):
-  #   doc_all.append(docs[i].split('\t')[0])
-  #   doc_all.append(docs[i].split('\t')[1])
-  # doc_all_new = []
-  #
-  # for i in range(len(doc_all)):
-  #   _tmp = doc_all[i].replace('.', '')
-  #   tmp = _tmp.split()
-  #   tmp2 = ''
-  #   for j in range(len(tmp)):
-  #     if tmp[j] not in stop_words:
-  #       tmp2 += ps.stem(tmp[j]) + ' '
-  #   doc_all_new.append(tmp2)
+
 
 
   # #define model
@@ -97,7 +91,7 @@ def main():
   )
   model = SentenceTransformer(modules=[transformer, pooling])
 
-  # #read train data
+  #read train data
   train_examples = []
   input = (read_file('learnData/STS.input.OnWN.txt'))
   input1 = []
@@ -105,6 +99,8 @@ def main():
   for i in range(len(input)):
     input1.append(input[i].split('\t')[0].replace('.', ''))
     input2.append(input[i].split('\t')[1].replace('.\n', ''))
+  input1 = pre_process(input1)
+  input2 = pre_process(input2)
   input_similality = (read_file('learnData/STS.gs.OnWN.txt'))
   for i in range(len(input_similality)):
     input_similality[i] = input_similality[i].replace('\n', '')
@@ -143,6 +139,8 @@ def main():
   for i in range(len(test_data)):
     test_data1.append(test_data[i].split('\t')[0].replace('.', ''))
     test_data2.append(test_data[i].split('\t')[1].replace('.\n', ''))
+  test_data1 = pre_process(test_data1)
+  test_data2 = pre_process(test_data2)
   vec1 = []
   vec2 = []
   for i in range(len(test_data)):
